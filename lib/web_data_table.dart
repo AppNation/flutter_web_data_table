@@ -13,7 +13,7 @@ export 'src/web_data_table_source.dart';
 class WebDataTable extends StatelessWidget {
   const WebDataTable({
     Key? key,
-    required this.header,
+    this.header,
     this.actions,
     this.dataRowHeight = kMinInteractiveDimension,
     this.headingRowHeight = 56.0,
@@ -38,7 +38,7 @@ class WebDataTable extends StatelessWidget {
   }) : super(key: key);
 
   static const int defaultRowsPerPage = 10;
-  final Widget header;
+  final Widget? header;
   final List<Widget>? actions;
   final double dataRowHeight;
   final double headingRowHeight;
