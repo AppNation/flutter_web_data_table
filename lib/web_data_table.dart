@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'src/custom_paginated_data_table.dart';
 import 'src/web_data_table_source.dart';
 
 export 'src/web_data_column.dart';
@@ -31,6 +32,9 @@ class WebDataTable extends StatelessWidget {
     this.dragStartBehavior = DragStartBehavior.start,
     this.onSort,
     required this.source,
+    required this.onPageIncreased,
+    required this.onPageDecreased,
+    required this.pageIndex,
   }) : super(key: key);
 
   static const int defaultRowsPerPage = 10;
@@ -48,10 +52,13 @@ class WebDataTable extends StatelessWidget {
   final DragStartBehavior dragStartBehavior;
   final Function(String columnName, bool ascending)? onSort;
   final WebDataTableSource source;
+  final VoidCallback? onPageIncreased;
+  final VoidCallback? onPageDecreased;
+  final int pageIndex;
 
   @override
   Widget build(BuildContext context) {
-    return PaginatedDataTable(
+    return CustomPaginatedDataTable(
       header: header,
       actions: actions,
       columns: source.columns.map((config) {
@@ -87,6 +94,9 @@ class WebDataTable extends StatelessWidget {
       onRowsPerPageChanged: onRowsPerPageChanged,
       dragStartBehavior: dragStartBehavior,
       source: source,
+      onPageIncreased: onPageIncreased,
+      onPageDecreased: onPageDecreased,
+      pageIndex: pageIndex,
     );
   }
 }
