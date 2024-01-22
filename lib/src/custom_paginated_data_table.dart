@@ -483,7 +483,7 @@ class PaginatedDataTableState extends State<CustomPaginatedDataTable> {
         icon: const Icon(Icons.arrow_left),
         padding: EdgeInsets.zero,
       ),
-      Text((widget.pageIndex + 1).toString()),
+      Text("${widget.pageIndex}"),
       IconButton(
         onPressed: widget.onPageIncreased,
         icon: const Icon(Icons.arrow_right),
